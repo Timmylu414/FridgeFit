@@ -11,5 +11,5 @@ void setup() {
 void draw() {
   background(100);
   //12/1/22, Draw a screen with spaced boxes for food, with different coloring (random for now)
-  //Similar to Cellular automata, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
+  //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
 }

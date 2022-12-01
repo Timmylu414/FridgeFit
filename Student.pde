@@ -6,7 +6,7 @@ class Student{
   String socialSkill;
   float productivity;
   
-  Student(String n, int a, int h, float b){
+  Student(n, a, h, b){
     n = this.name;
     a = this.age;
     h = this.health;
@@ -14,6 +14,7 @@ class Student{
     this.socialSkill = "average";
     this.productivity = 0.5;
   }
+
   
   //go shopping
   void buyGroceries(){
