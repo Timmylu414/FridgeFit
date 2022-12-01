@@ -6,7 +6,7 @@ class Student{
   String socialSkill;
   float productivity;
   
-  Student(n, a, h, b){
+  Student(String n, int a,int  h, float b){
     n = this.name;
     a = this.age;
     h = this.health;
