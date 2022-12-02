@@ -6,19 +6,28 @@ class Student{
   String socialSkill;
   float productivity;
   
-  Student(String n, int a,int  h, float b){
-    n = this.name;
-    a = this.age;
-    h = this.health;
-    b = this.balance;
-    this.socialSkill = "average";
-    this.productivity = 0.5;
+  Student(String n, int a,int  h, float b, float p){
+   this.name = n;
+   this.age = a;
+   this.health = h;
+   this.balance = b;
+   this.socialSkill = "normal";
+   this.productivity = p;
   }
 
   
   //go shopping
   void buyGroceries(){
-    //count how many empty spots are in fridge
+    int shopListSize = 0;
+    for (int i=0; i<(n+1); i++) {
+      for (int j = 0; j<n; j++) {
+        if (fud[i][j] == null) {
+          shopListSize += 1;
+        }
+      }
+    }
+    println(shopListSize);
+    
     //create shopping list, fill shopping list based on what fridge is lacking and health habits, chance of not filling list
     //for every item in shopping list, set arrayList<food> fridgeItems index to the index of shopping list, fills up fridge
     //set filled = true or not?
