@@ -2,22 +2,30 @@ import g4p_controls.*;
 
 ArrayList <Food> foodInFridge = new ArrayList<Food>();
 int foodCounter=0;
-int n = 3;
+int n = 4;
 float cellSize;
 int padding = 50;
 color[][] cells = new color[n][n];
+int fridgeX = 25;
+int fridgeY = 25;
 
 void setup() {
-  size(500,650);
+  size(800,650);
+  background(100);
   createGUI();
+  fill(255);
+  rect(fridgeX, fridgeY, fridgeX + 425, fridgeY + 555 );
+
   
-  cellSize = ((width-((n+1)*50))/n);
+  
+  cellSize = (((width-300)-((n+1)*50))/n);
   println(cellSize);
   setFirstGen();
 }
 
 void draw() {
-  background(100);
+  
+  
   float y = padding;
   //countFood();
   for (int i=0; i<(n+1); i++) {
@@ -30,6 +38,5 @@ void draw() {
     y += 50 + cellSize;
   }
   
-  //12/1/22, Draw a screen with spaced boxes for food, with different coloring (random for now)
   //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
 }
