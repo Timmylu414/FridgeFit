@@ -33,6 +33,18 @@ class Student{
     //set filled = true or not?
     
   }
+  
+  void removeSpoiled() {
+    for(int i=0; i<(n+1); i++) {
+      for (int j=0; j<n; j++) {
+        if (fud[i][j]!= null) {
+          if ((fud[i][j].freshness<1) && (random(0,1)>0.8)) {
+            fud[i][j] = null;
+          }
+        }
+      }
+    }
+  }
   //eat out
   //earned money
   //went to workout

@@ -1,12 +1,13 @@
 void setFirstGen() {
   cells = new color[n+1][n];
-  Food[][] fud = new Food[n+1][n];
   
   for(int i=0; i<(n+1); i++) {
     for (int j=0; j<n; j++) {
       if ((i%2==0)&&(i!=0)) {
         strokeWeight(10);
-        line(fridgeX+25, i*(cellSize + padding)+padding/2, ((n)*50) + n*cellSize, i*(cellSize + padding)+padding/2);
+        println(i);
+        stroke(100);
+        line(fridgeX+25, i*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, i*(cellSize + padding)+padding/2.0);
         noStroke();
       }
       
