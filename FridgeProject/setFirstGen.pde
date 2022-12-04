@@ -5,7 +5,7 @@ void setFirstGen() {
     for (int j=0; j<n; j++) {
       if ((i%2==0)&&(i!=0)) {
         strokeWeight(10);
-        println(i);
+        //println(i);
         stroke(100);
         line(fridgeX+25, i*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, i*(cellSize + padding)+padding/2.0);
         noStroke();

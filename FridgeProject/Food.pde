@@ -2,7 +2,7 @@ class Food
 {
   int healthValue;
   float flavorValue;
-  float liklyGoodStill;
+  float likelyGoodStill;
   int rottenChance;
   String type;
   float freshness;
@@ -15,7 +15,7 @@ class Food
     foodInFridge.add(this);
     healthValue = hV;
     flavorValue = fV;
-    liklyGoodStill = lGS;
+    likelyGoodStill = lGS;
     rottenChance=0;
     type =t;
     spoiled=false;
@@ -24,15 +24,14 @@ class Food
   
   void totalHealthValue(){
     for (int i=0; i<foodCounter; i++){
-      //int thisFoodHV = foodInFridge.get(healthValue);
-      //totalHealthValue = totalHealthValue + thisFoodHV;
+      totalHealthValue = totalHealthValue + this.healthValue;
     }
   }
 
   void foodExpiryAllDown() {
     for (int i =0; i<foodCounter; i++) {
-      if (foodInFridge.get(i).liklyGoodStill>0) {
-        foodInFridge.get(i).liklyGoodStill-=1;
+      if (foodInFridge.get(i).likelyGoodStill>0) {
+        foodInFridge.get(i).likelyGoodStill-=1;
       } else {
         int willItRot = int(random(100));
         rottenChance+=5;

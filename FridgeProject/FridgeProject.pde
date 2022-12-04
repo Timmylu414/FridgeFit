@@ -16,7 +16,7 @@ float balance;
 Food[][] fud = new Food[n+1][n];
 Student ellie = new Student("Ellie", 16,10,20,30);
 
-float healthValue;
+float totalHealthValue;
 
 
 void setup() {
@@ -31,8 +31,6 @@ void setup() {
   textSize(20);
   text("Timothy Lu", 525, 110);
   text("Ellie's balance:", 525, 150);
-  text("$", 525, 175);
-  text(ellie.balance, 530, 175);
   ellie.buyGroceries();
 
   
@@ -40,8 +38,8 @@ void setup() {
   fill(255);
   rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight );
   println(fridgeX, fridgeX + fridgeWidth);
-
-  
+  text("$", 525, 175);
+  text(ellie.balance, 530, 175); 
   cellSize = ((fridgeWidth/2)/n);
   println(cellSize);
   setFirstGen();
@@ -51,8 +49,7 @@ void setup() {
 
 void draw() {
   timePassed += 1;
-  println(timePassed);
-  
+  //println(timePassed);
   float y = padding;
   //countFood();
   for (int i=0; i<(n+1); i++) {
@@ -70,6 +67,16 @@ void draw() {
     y += 50 + cellSize;
   }
   setNextGen();
-  
   //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
+  for (int i=0; i > 0; i++){
+    checkBalance();
+  }
+}
+
+void checkBalance(){
+  text("$", 525, 175);
+  text(ellie.balance, 530, 175);
+  fill(0);
+  //delay(2000);
+  square(525, 155, 100);
 }
