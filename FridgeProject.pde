@@ -17,7 +17,8 @@ Student ellie = new Student("Ellie", 16,0,0,0);
 
 
 void setup() {
-  noLoop();
+  //noLoop();
+  frameRate(5);
   size(1000,650);
   background(0);
   
