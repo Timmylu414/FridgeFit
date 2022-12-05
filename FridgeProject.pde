@@ -10,14 +10,14 @@ int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 555;
 
-Fridge f = new Fridge(fridgeX,fridgeY,fridgeWidth,fridgeHeight, padding, n);
+Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, padding, n);
 Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
 
 
 void setup() {
   //noLoop();
   frameRate(3);
-  size(1000,650);
+  size(1000, 650);
   background(0);
   f.assignStudent(ellie);
   drawText();
@@ -27,7 +27,6 @@ void setup() {
   f.drawFood();
   // show student's health
   //ellie.buyGroceries();
-
 }
 
 void draw() {
@@ -42,8 +41,8 @@ void draw() {
   //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
 }
 
-void reset(){
-  size(1000,650);
+void reset() {
+  size(1000, 650);
   background(0);
   resetValues();
   drawText();
@@ -54,18 +53,24 @@ void reset(){
 
 void resetValues() {
   ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
-  f = new Fridge(fridgeX,fridgeY,fridgeWidth,fridgeHeight, padding, n);
+  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, padding, n);
   f.assignStudent(ellie);
-
 }
 
 void drawText() {
   textSize(40);
+  fill(150);
+  stroke(255);
+  strokeWeight(4);
+  rect(510, 25, 600, 120);
+  noStroke();
   fill(255);
-  text("The FridgeProject", 525,70);
+  text("The", 525, 90);
+  textSize(50);
+  text("FridgeProject", 600, 90);
   textSize(20);
-  text("Timothy Lu, Ellie Kim, Roy", 525, 120);
-  text("Days Passed: " + timePassed, 525, 170);
-  f.drawSpoiledFoodCounter(525, 220);
-  ellie.displayHealth(525, 270);
+  text("Timothy, Ellie, Roy", 525, 130);
+  text("Days Passed: " + timePassed, 525, 190);
+  f.drawSpoiledFoodCounter(525, 230);
+  ellie.displayHealth(525, 280);
 }
