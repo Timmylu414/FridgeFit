@@ -46,10 +46,9 @@ class Student {
     float variance = 0.2;
     int mealsPerDay;
     if (healthiness>=0.5) {
-      mealsPerDay = int(random(1,3));
-    }
-    else {
-      mealsPerDay = int(random(0,3));
+      mealsPerDay = int(random(1, 3));
+    } else {
+      mealsPerDay = int(random(0, 3));
     }
     f.eatFood(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
   }
@@ -73,7 +72,12 @@ class Student {
 
   void displayHealth(int x, int y) {
     fill(255);
-    text("Student health: " + health, x, y);
+    if (health >= 100) {
+      text("Student health:100", x, y);
+    } else {
+      text("Student health: " + health, x, y);
+    }
+
     text("Food eaten: " + foodEaten, x, y + 50);
   }
 }

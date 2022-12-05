@@ -1,6 +1,6 @@
 import g4p_controls.*;
 float healthiness;
-boolean pressed;
+boolean pressed=true;
 int timePassed = 0;
 int foodCounter=0;
 int n = 4;
