@@ -17,11 +17,10 @@ boolean pressed;
 
 void setup() {
   pressed = true;
-  //noLoop();
-  frameRate(2);
+  frameRate(5);
   size(1000,650);
   background(0);
-  Student ellie = new Student("Ellie", 16, healthiness, 0.8, 10, 10, f);
+  Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
   f.assignStudent(ellie);
   drawText();
   createGUI();
@@ -34,18 +33,11 @@ void setup() {
 }
 
 Student resetValue(){
-  Student ellie = new Student("Ellie", 16, healthiness, 0.8, 10, 10, f);
+  Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
   return ellie;
 }
 
 void reset(){
-  //if (pressed == true){
-  //  pressed = false;
-  //}
-  //else{
-  //  pressed = true;
-  //}
-  frameRate(5);
   size(1000,650);
   background(0);
   Student ellie = resetValue();
