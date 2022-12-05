@@ -4,6 +4,7 @@ class Fridge {
   int fridgeWidth; 
   int fridgeHeight;
   int fridgeXPad;
+  int radius;
   Food[][] cells;
   float cellSize;
   ArrayList <Food> food;
@@ -14,11 +15,12 @@ class Fridge {
   int capacity; 
   Student student;
 
-  Fridge(int x, int y, int w, int h, float padding, int n) {
+  Fridge(int x, int y, int w, int h, int r, float padding, int n) {
     this.x = x;
     this.y = y;
     this.fridgeWidth = w;
     this.fridgeHeight = h;
+    this.radius = r;
     this.fridgeXPad = (fridgeWidth/2)/n; 
     this.cells = new Food[n+1][n];
     this.cellSize = (fridgeWidth/2)/n;
@@ -73,7 +75,7 @@ class Fridge {
 
   void drawFridge() {
     fill(255);
-    rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight);
+    rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight,radius);
     strokeWeight(10);
     stroke(100);
     line(fridgeX+25, 2*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 2*(cellSize + padding)+padding/2.0);

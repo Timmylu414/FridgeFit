@@ -9,8 +9,9 @@ int fridgeX = 25;
 int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 555;
+int radius = 28;
 
-Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, padding, n);
+Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
 Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
 
 
@@ -53,7 +54,7 @@ void reset() {
 
 void resetValues() {
   ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
-  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, padding, n);
+  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
   f.assignStudent(ellie);
 }
 
@@ -62,7 +63,7 @@ void drawText() {
   fill(150);
   stroke(255);
   strokeWeight(4);
-  rect(510, 25, 600, 120);
+  rect(510, 25, 600, 130, 25);
   noStroke();
   fill(255);
   text("The", 525, 90);
@@ -70,7 +71,7 @@ void drawText() {
   text("FridgeProject", 600, 90);
   textSize(20);
   text("Timothy, Ellie, Roy", 525, 130);
-  text("Days Passed: " + timePassed, 525, 190);
-  f.drawSpoiledFoodCounter(525, 230);
-  ellie.displayHealth(525, 280);
+  text("Days Passed: " + timePassed, 525, 200);
+  f.drawSpoiledFoodCounter(525, 250);
+  ellie.displayHealth(525, 300);
 }
