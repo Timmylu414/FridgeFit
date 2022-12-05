@@ -14,7 +14,7 @@ Student ellie = new Student("Ellie", 16, 0.5, 0.8, 10, 10, f);
 
 void setup() {
   //noLoop();
-  frameRate(1);
+  frameRate(5);
   size(1000,650);
   background(0);
   f.assignStudent(ellie);

@@ -10,6 +10,7 @@ class Fridge {
   float pad;
   int n;
   int numFoodSpoiled;
+  float spoilRate;
   int capacity; 
   Student student;
 
@@ -25,6 +26,7 @@ class Fridge {
     this.pad = padding;
     this.n = n;
     this.numFoodSpoiled = 0;
+    this.spoilRate = 0.1;
     this.capacity = n*(n+1);
   }
   
@@ -108,7 +110,7 @@ class Fridge {
   void setNextGen() {
     removeSpoiled();
     for (Food item : food) {
-      item.freshness -= item.healthValue*0.1;
+      item.freshness -= item.healthValue*spoilRate;
       item.updateFoodColor();
     }
   }

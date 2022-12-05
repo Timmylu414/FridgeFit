@@ -44,7 +44,7 @@ class Student {
     // do some logic based on the students stats to decide what to send in the parameters for the eatFood() function in fridge
     // also check the timepassed. use that to implement how often the student eats
     float variance = 0.2;
-    f.eatFood(this,int(random(0,3)),healthiness + random(-variance,variance),healthiness + random(-variance,variance));
+    f.eatFood(int(random(0,3)),healthiness + random(-variance,variance),healthiness + random(-variance,variance));
   }
   //eat out
   //     adjust the student's health

@@ -26,8 +26,8 @@ class Food
   }
   
   void updateFoodColor() {
-    colorMode(HSB, 360, 100, 100);
-    foodColor = color(50 * (1 + healthValue), 100, freshness*100);
+    colorMode(HSB, 360, 100, 100);  //Changing from RGB to HSB, hue, saturation, brightness
+    foodColor = color(50 * (1 + healthValue), 100, freshness*100);  //Hue is dependent on how healthy the food is, brightness is based on how fresh
     colorMode(RGB, 255);
   }
 
