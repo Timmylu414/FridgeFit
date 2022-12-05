@@ -29,13 +29,13 @@ class Fridge {
     this.spoilRate = 0.1;
     this.capacity = n*(n+1);
   }
-  
+
   void assignStudent(Student s) { 
     this.student = s;
   }
 
   void insertItem(int i, int j) {
-    float healthValue = random(0, 1);
+    float healthValue = student.healthiness + random(-0.2,0.2);
     float freshness = random(0.7, 1);
     Food item = new Food(healthValue, random(0, 1), 10, "hi", freshness, i, j);
     cells[i][j] = item;
@@ -52,7 +52,7 @@ class Fridge {
       }
     }
   }
-  
+
   void removeItem(int i) {
     Food item = food.get(i);
     cells[item.i][item.j] = null;
@@ -102,7 +102,7 @@ class Fridge {
     for (int i=food.size()-1; i>=0; i--) {
       Food item = food.get(i);
       if ((item.freshness<0.2) && (random(0, 1)>0.8)) {
-        food.remove(i);
+        removeItem(i);
         numFoodSpoiled++;
       }
     }
@@ -113,6 +113,9 @@ class Fridge {
       item.freshness -= item.healthValue*spoilRate;
       item.updateFoodColor();
     }
+    if (food.size()<5){
+      fillFridge();
+    }
   }
 
   void drawSpoiledFoodCounter(int x, int y) {
@@ -122,25 +125,33 @@ class Fridge {
   }
 
   void eatFood(int n, float hV, float fV) {
+    student.health += n-3;
     for (int i=food.size()-1; i>=0; i--) {
       Food item = food.get(i);
       if (n == 0) {
+        //student.health -= 3;
         break;
       }
+
       if ((item.healthValue >= hV)) {
         student.foodEaten++;
-        student.health = student.health + round((item.healthValue - 0.5)*10) - round((1-item.freshness)*5);
+        student.health = student.health + round((item.healthValue)*10) - round((1-item.freshness)*6);
         removeItem(i);
         n--;
       }
     }
   }
-  
+
   void fillFridge() {
     int emptySpots = capacity - food.size();
-    //Loop through cells 
-    //if that cell is null, call insertItem(i,j)
-    //want to adjust insertItem to depend on student's healthiness etc. 
+    for (int i=0; i<(n+1); i++) {
+      for (int j = 0; j<n; j++) {
+        if ((cells[i][j] == null)&&(emptySpots>0)) {
+          insertItem(i,j);
+          emptySpots--;
+        }
+        //want to adjust insertItem to depend on student's healthiness etc.
+      }
+    }
   }
-
 }
