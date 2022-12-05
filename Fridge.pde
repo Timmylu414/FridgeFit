@@ -37,7 +37,7 @@ class Fridge {
   void insertItem(int i, int j) {
     float healthValue = student.healthiness + random(-0.2,0.2);
     float freshness = random(0.7, 1);
-    Food item = new Food(healthValue, random(0, 1), 10, "hi", freshness, i, j);
+    Food item = new Food(healthValue, random(0, 1), "hi", freshness, i, j);
     cells[i][j] = item;
     food.add(item);
   }
@@ -125,7 +125,7 @@ class Fridge {
   }
 
   void eatFood(int n, float hV, float fV) {
-    student.health += n-3;
+    student.health += n-2;
     for (int i=food.size()-1; i>=0; i--) {
       Food item = food.get(i);
       if (n == 0) {
@@ -135,7 +135,7 @@ class Fridge {
 
       if ((item.healthValue >= hV)) {
         student.foodEaten++;
-        student.health = student.health + round((item.healthValue)*10) - round((1-item.freshness)*6);
+        student.health = student.health + round((item.healthValue-0.3)*5) - round((1-item.freshness)*3);
         removeItem(i);
         n--;
       }
