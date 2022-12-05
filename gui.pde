@@ -24,7 +24,7 @@ public void healthinessSlider_change1(GSlider source, GEvent event) { //_CODE_:h
 } //_CODE_:healthinessSlider:828971:
 
 public void reset_click1(GButton source, GEvent event) { //_CODE_:resetButton:689420:
-  createGUI();
+  //createGUI();
   reset();
 } //_CODE_:resetButton:689420:
 
