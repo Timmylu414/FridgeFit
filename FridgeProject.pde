@@ -1,26 +1,26 @@
 import g4p_controls.*;
-
+boolean pressed=true;
 int timePassed = 0;
 int foodCounter=0;
 int n = 4;
 int padding = 50;
-int fridgeX = 25;
+int fridgeX = 40;
 int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 555;
-Fridge f = new Fridge(fridgeX,fridgeY,fridgeWidth,fridgeHeight, padding, n);
-//Student ellie = new Student("Ellie", 16, 0.5, 0.8, 10, 10, f);
-
+int radius = 28;
 float healthiness;
-boolean pressed;
+int shoppingFrequency = 5;
+
+Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
+Student ellie = new Student("Ellie", 16, healthiness/10, shoppingFrequency, 0.8, 10, 10, f);
 
 
 void setup() {
-  pressed = true;
-  frameRate(5);
-  size(1000,650);
+  //noLoop();
+  frameRate(3);
+  size(1000, 650);
   background(0);
-  Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
   f.assignStudent(ellie);
   drawText();
   createGUI();
@@ -29,23 +29,6 @@ void setup() {
   f.drawFood();
   // show student's health
   //ellie.buyGroceries();
-
-}
-
-Student resetValue(){
-  Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
-  return ellie;
-}
-
-void reset(){
-  size(1000,650);
-  background(0);
-  Student ellie = resetValue();
-  f.assignStudent(ellie);
-  drawText();
-  f.drawFridge();
-  f.setFirstGen();
-  f.drawFood();
 }
 
 void draw() {
@@ -56,18 +39,40 @@ void draw() {
   println(timePassed);
   f.drawFood();
   f.setNextGen();
-  Student ellie = resetValue();
   ellie.eatFoodInFridge();
   //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
 }
 
+void reset() {
+  size(1000, 650);
+  background(0);
+  resetValues();
+  drawText();
+  f.drawFridge();
+  f.setFirstGen();
+  f.drawFood();
+}
+
+void resetValues() {
+  ellie = new Student("Ellie", 16, healthiness/10,shoppingFrequency, 0.8, 10, 10, f);
+  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
+  f.assignStudent(ellie);
+}
+
 void drawText() {
   textSize(40);
+  fill(150);
+  stroke(255);
+  strokeWeight(4);
+  rect(510, 25, 600, 130, 25);
+  noStroke();
   fill(255);
-  text("The FridgeProject", 525,75);
+  text("The", 525, 90);
+  textSize(50);
+  text("FridgeProject", 600, 90);
   textSize(20);
-  text("Timothy Lu", 525, 110);
-  f.drawSpoiledFoodCounter(525, 150);
-  Student ellie = resetValue();
-  ellie.displayHealth(525, 200);
+  text("Timothy, Ellie, Roy", 525, 130);
+  text("Days Passed: " + timePassed, 525, 200);
+  f.drawSpoiledFoodCounter(525, 250);
+  ellie.displayHealth(525, 300);
 }

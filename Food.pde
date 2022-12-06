@@ -11,14 +11,10 @@ class Food
   int j;
   color foodColor;
   
-  Food(float hV, float fV, float lGS, String t, float f, int i, int j) {
-    foodCounter+=1;
+  Food(float hV, float fV, String t, float f, int i, int j) {
     healthValue = hV;
     flavorValue = fV;
-    liklyGoodStill = lGS;
-    rottenChance=0;
     type =t;
-    spoiled=false;
     this.freshness = f;
     this.i = i;
     this.j = j;

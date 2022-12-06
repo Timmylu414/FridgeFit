@@ -3,6 +3,8 @@ class Student {
   int age;
   int health;
   float healthiness;
+  int shoppingFrequency;
+
   float responsibility;
   float balance;
   String socialSkill;
@@ -10,11 +12,12 @@ class Student {
   Fridge fridge;
   int foodEaten;
 
-  Student(String n, int a, float h, float r, float b, float p, Fridge f) {
+  Student(String n, int a, float h, int s, float r, float b, float p, Fridge f) {
     this.name = n;
     this.age = a;
-    this.health = 100;
+    this.health = 80;
     this.healthiness = h;
+    this.shoppingFrequency = s;
     this.responsibility = r;
     this.balance = b;
     this.socialSkill = "normal";
@@ -26,7 +29,7 @@ class Student {
 
 
   //go shopping
-  void buyGroceries(){
+  void buyGroceries() {
     f.fillFridge();
   }
 
@@ -36,25 +39,48 @@ class Student {
   //  //set filled = true or not?
 
   //}
-  void eat() { 
+  void eat() {
   }
-  
+
   void eatFoodInFridge() {
-    
+
     // do some logic based on the students stats to decide what to send in the parameters for the eatFood() function in fridge
     // also check the timepassed. use that to implement how often the student eats
     float variance = 0.2;
-    f.eatFood(int(random(0,3)),healthiness + random(-variance,variance),healthiness + random(-variance,variance));
+    int mealsPerDay;
+    if (healthiness>=0.5) {
+      mealsPerDay = int(random(1, 3));
+    } else {
+      mealsPerDay = int(random(0, 3));
+    }
+    f.eatFood(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
   }
   //eat out
-  //     adjust the student's health
-  //earned money
-  //went to workout
-  //birthday
-  
+  //void eatout() {
+  //  balance = balance - random(5, 20);
+  //  socialSkill = "good";
+  //}
+
+  ////party
+  //void throwParty() {
+  //  //empties out whole fridge
+  //  balance = balance - random(10, 50);
+  //  socialSkill = "good";
+  //}
+
+  //void stayLonely() {
+  //  balance = balance - random(50, 60); //assuming now they need therapy
+  //  socialSkill = "bad";
+  //}
+
   void displayHealth(int x, int y) {
     fill(255);
-    text("Student health: " + health, x, y);
+    if (health >= 100) {
+      text("Student health:100", x, y);
+    } else {
+      text("Student health: " + health, x, y);
+    }
+
     text("Food eaten: " + foodEaten, x, y + 50);
   }
 }
