@@ -12,10 +12,11 @@ class Fridge {
   int n;
   int numFoodSpoiled;
   float spoilRate;
+  int shoppingFrequency;
   int capacity; 
   Student student;
 
-  Fridge(int x, int y, int w, int h, int r, float padding, int n) {
+  Fridge(int x, int y, int w, int h, int r, float padding, int n, float sR, int sF) {
     this.x = x;
     this.y = y;
     this.fridgeWidth = w;
@@ -28,7 +29,8 @@ class Fridge {
     this.pad = padding;
     this.n = n;
     this.numFoodSpoiled = 0;
-    this.spoilRate = 0.1;
+    this.spoilRate = sR;
+    this.shoppingFrequency=sF;
     this.capacity = n*(n+1);
   }
 
@@ -37,7 +39,7 @@ class Fridge {
   }
 
   void insertItem(int i, int j) {
-    float healthValue = student.healthiness + random(-0.2,0.2);
+    float healthValue = student.healthiness + random(-0.2, 0.2);
     float freshness = random(0.7, 1);
     Food item = new Food(healthValue, random(0, 1), "hi", freshness, i, j);
     cells[i][j] = item;
@@ -75,7 +77,7 @@ class Fridge {
 
   void drawFridge() {
     fill(255);
-    rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight,radius);
+    rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius);
     strokeWeight(10);
     stroke(100);
     line(fridgeX+25, 2*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 2*(cellSize + padding)+padding/2.0);
@@ -115,7 +117,7 @@ class Fridge {
       item.freshness -= item.healthValue*spoilRate;
       item.updateFoodColor();
     }
-    if (food.size()<shoppingFrequency){
+    if (food.size()<shoppingFrequency) {
       fillFridge();
     }
   }
@@ -149,7 +151,7 @@ class Fridge {
     for (int i=0; i<(n+1); i++) {
       for (int j = 0; j<n; j++) {
         if ((cells[i][j] == null)&&(emptySpots>0)) {
-          insertItem(i,j);
+          insertItem(i, j);
           emptySpots--;
         }
         //want to adjust insertItem to depend on student's healthiness etc.
