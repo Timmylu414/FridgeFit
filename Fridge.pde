@@ -115,7 +115,7 @@ class Fridge {
       item.freshness -= item.healthValue*spoilRate;
       item.updateFoodColor();
     }
-    if (food.size()<5){
+    if (food.size()<shoppingFrequency){
       fillFridge();
     }
   }

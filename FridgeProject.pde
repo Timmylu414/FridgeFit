@@ -1,5 +1,4 @@
 import g4p_controls.*;
-float healthiness;
 boolean pressed=true;
 int timePassed = 0;
 int foodCounter=0;
@@ -10,9 +9,11 @@ int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 555;
 int radius = 28;
+float healthiness;
+int shoppingFrequency = 5;
 
 Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
-Student ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
+Student ellie = new Student("Ellie", 16, healthiness/10, shoppingFrequency, 0.8, 10, 10, f);
 
 
 void setup() {
@@ -53,7 +54,7 @@ void reset() {
 }
 
 void resetValues() {
-  ellie = new Student("Ellie", 16, healthiness/10, 0.8, 10, 10, f);
+  ellie = new Student("Ellie", 16, healthiness/10,shoppingFrequency, 0.8, 10, 10, f);
   f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
   f.assignStudent(ellie);
 }

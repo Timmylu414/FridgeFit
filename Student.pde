@@ -3,6 +3,8 @@ class Student {
   int age;
   int health;
   float healthiness;
+  int shoppingFrequency;
+
   float responsibility;
   float balance;
   String socialSkill;
@@ -10,11 +12,12 @@ class Student {
   Fridge fridge;
   int foodEaten;
 
-  Student(String n, int a, float h, float r, float b, float p, Fridge f) {
+  Student(String n, int a, float h, int s, float r, float b, float p, Fridge f) {
     this.name = n;
     this.age = a;
     this.health = 80;
     this.healthiness = h;
+    this.shoppingFrequency = s;
     this.responsibility = r;
     this.balance = b;
     this.socialSkill = "normal";
