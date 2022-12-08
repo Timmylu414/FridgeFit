@@ -54,6 +54,7 @@ void reset() {
   f.drawFridge();
   f.setFirstGen();
   f.drawFood();
+  timePassed = 0;
 }
 
 void resetValues() {
