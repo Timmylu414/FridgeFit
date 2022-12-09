@@ -1,13 +1,14 @@
 class Fridge {
+  //FIELDS
   int x; 
   int y;
   int fridgeWidth; 
   int fridgeHeight;
   int fridgeXPad;
   int radius;
+  ArrayList <Food> food;
   Food[][] cells;
   float cellSize;
-  ArrayList <Food> food;
   float pad;
   int n;
   int numFoodSpoiled;
@@ -16,16 +17,17 @@ class Fridge {
   int capacity; 
   Student student;
 
+  //CONSTRUCTOR
   Fridge(int x, int y, int w, int h, int r, float padding, int n, float sR, int sF) {
     this.x = x;
     this.y = y;
     this.fridgeWidth = w;
     this.fridgeHeight = h;
-    this.radius = r;
     this.fridgeXPad = (fridgeWidth/2)/n; 
+    this.radius = r;
+    this.food = new ArrayList<Food>();
     this.cells = new Food[n+1][n];
     this.cellSize = (fridgeWidth/2)/n;
-    this.food = new ArrayList<Food>();
     this.pad = padding;
     this.n = n;
     this.numFoodSpoiled = 0;
@@ -34,12 +36,13 @@ class Fridge {
     this.capacity = n*(n+1);
   }
 
-  void assignStudent(Student s) { 
+  //METHODS
+  void assignStudent(Student s) {  //Assigns an owner to the fridge
     this.student = s;
   }
 
-  void insertItem(int i, int j) {
-    float healthValue = student.healthiness + random(-0.2, 0.2);
+  void insertItem(int i, int j) {  //Shopping
+    float healthValue = student.healthiness + random(-0.2, 0.2);  //Student Buys health according
     float freshness = random(0.7, 1);
     Food item = new Food(healthValue, random(0, 1), "hi", freshness, i, j);
     cells[i][j] = item;
@@ -63,7 +66,7 @@ class Fridge {
     food.remove(i);
   }
 
-  void setFirstGen() {
+  void setFirstGen() {  //Fills fridge randomly 
     for (int i=0; i<(n+1); i++) {
       for (int j=0; j<n; j++) {
         if (random(0, 1)>0.1) {
@@ -128,23 +131,7 @@ class Fridge {
     text(text, x, y);
   }
 
-  void eatFood(int n, float hV, float fV) {
-    student.health += n-2;
-    for (int i=food.size()-1; i>=0; i--) {
-      Food item = food.get(i);
-      if (n == 0) {
-        //student.health -= 3;
-        break;
-      }
 
-      if ((item.healthValue >= hV)) {
-        student.foodEaten++;
-        student.health = student.health + round((item.healthValue-0.3)*5) - round((1-item.freshness)*3);
-        removeItem(i);
-        n--;
-      }
-    }
-  }
 
   void fillFridge() {
     int emptySpots = capacity - food.size();
