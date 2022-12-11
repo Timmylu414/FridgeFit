@@ -2,7 +2,6 @@ import g4p_controls.*;
 boolean pressed=true;
 int timePassed = 0;
 int foodCounter= 0;
-//int n = 4;
 int padding = 50;
 int fridgeX = 40;
 int fridgeY = 25;

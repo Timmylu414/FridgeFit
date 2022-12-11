@@ -189,7 +189,7 @@ public void createGUI(){
   imgButton3.addEventHandler(this, "imgButton3_click1");
   imgButton4 = new GImageButton(window1, 121, 183, 20, 20, new String[] { "Large.png", "Large.png", "Large.png" } );
   imgButton4.addEventHandler(this, "imgButton4_click1");
-  imgButton5 = new GImageButton(window1, 135, 12, 185, 28, new String[] { "Screen Shot 2022-12-11 at 4.08.54 AM.png", "Screen Shot 2022-12-11 at 4.08.54 AM.png", "Screen Shot 2022-12-11 at 4.08.54 AM.png" } );
+  imgButton5 = new GImageButton(window1, 135, 12, 185, 28, new String[] { "unnamed.png", "unnamed.png", "unnamed.png" } );
   imgButton5.addEventHandler(this, "imgButton5_click1");
   imgButton6 = new GImageButton(window1, -1, 12, 51, 52, new String[] { "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png" } );
   imgButton6.addEventHandler(this, "imgButton6_click1");
