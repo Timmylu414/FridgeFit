@@ -3,82 +3,85 @@ class Student {
   int age;
   int health;
   float healthiness;
-  int shoppingFrequency;
-
-  float responsibility;
-  float balance;
-  String socialSkill;
-  float productivity;
+  float loneliness;
   Fridge fridge;
   int foodEaten;
 
-  Student(String n, int a, float h, int s, float r, float b, float p, Fridge f) {
-    this.name = n;
+  Student(String studentName, int a, float h, Fridge f) {
+    this.name = studentName;
     this.age = a;
     this.health = 80;
     this.healthiness = h;
-    this.shoppingFrequency = s;
-    this.responsibility = r;
-    this.balance = b;
-    this.socialSkill = "normal";
-    this.productivity = p;
+    this.loneliness = 0;
     this.fridge = f;
     this.foodEaten = 0;
   }
-
-
 
   //go shopping
   void buyGroceries() {
     f.fillFridge();
   }
 
-
-  //  //create shopping list, fill shopping list based on what fridge is lacking and health habits, chance of not filling list
-  //  //for every item in shopping list, set arrayList<food> fridgeItems index to the index of shopping list, fills up fridge
-  //  //set filled = true or not?
-
-  //}
-  void eat() {
+  void chooseEat() {  //decides whether student eats at home or goes out
+    if (loneliness>20) {
+      eatOut();
+      println(name, "touched grass");
+    } else {
+      eatFoodInFridge();
+    }
   }
 
+  //calculates values to input into eatAtHome function
   void eatFoodInFridge() {
-
     // do some logic based on the students stats to decide what to send in the parameters for the eatFood() function in fridge
     // also check the timepassed. use that to implement how often the student eats
     float variance = 0.2;
     int mealsPerDay;
     if (healthiness>=0.5) {
-      mealsPerDay = int(random(1, 3));
+      mealsPerDay = int(random(1, 4));
     } else {
       mealsPerDay = int(random(0, 3));
     }
-    f.eatFood(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
+    eatAtHome(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
+  }
+
+  void eatAtHome(int n, float hV, float fV) {
+    health += n-2;
+    loneliness += 1;
+    println("n is: ", n);
+    for (int i=f.food.size()-1; i>=0; i--) {
+      Food item = f.food.get(i);
+      if (n == 0) {
+        break;
+      }
+
+      if ((item.healthValue >= hV) && (item.freshness>= hV-0.4)) {
+        foodEaten++;
+        health = health + round((item.healthValue-0.4)*5) - round((1-item.freshness)*3);
+        f.removeItem(i);
+        n--;
+      }
+    }
   }
   //eat out
-  //void eatout() {
-  //  balance = balance - random(5, 20);
-  //  socialSkill = "good";
-  //}
+  void eatOut() {
+    loneliness = 0;
+    health += 2;
+  }
 
-  ////party
-  //void throwParty() {
-  //  //empties out whole fridge
-  //  balance = balance - random(10, 50);
-  //  socialSkill = "good";
-  //}
-
-  //void stayLonely() {
-  //  balance = balance - random(50, 60); //assuming now they need therapy
-  //  socialSkill = "bad";
-  //}
 
   void displayHealth(int x, int y) {
     fill(255);
     if (health >= 100) {
-      text("Student health:100", x, y);
+      text(studentName, x, y);
+      text("'s health: 100", x + (studentName.length() + studentName.length()*10), y);
+    } else if (health <= 0) {
+      text(studentName, x, y);
+      text("'s health: 0", x + (studentName.length() + studentName.length()*10), y);
+      gameOver();
     } else {
-      text("Student health: " + health, x, y);
+      text(studentName, x, y);
+      text("'s health: " + health, x + (studentName.length() + studentName.length()*10), y);
     }
 
     text("Food eaten: " + foodEaten, x, y + 50);

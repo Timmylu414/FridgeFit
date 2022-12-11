@@ -10,14 +10,18 @@ int fridgeWidth = 425;
 int fridgeHeight = 555;
 int radius = 28;
 float healthiness;
-int shoppingFrequency = 5;
+float spoilRate;
+int shoppingFrequency;
 
-Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
-Student ellie = new Student("Ellie", 16, healthiness/10, shoppingFrequency, 0.8, 10, 10, f);
+String studentName = "Ellie";
+
+
+Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
+Student ellie = new Student(studentName, 16, healthiness/10, f);
 
 
 void setup() {
-  //noLoop();
+  println(spoilRate);
   frameRate(3);
   size(1000, 650);
   background(0);
@@ -26,9 +30,8 @@ void setup() {
   createGUI();
   f.drawFridge();
   f.setFirstGen();
-  f.drawFood();
-  // show student's health
-  //ellie.buyGroceries();
+  f.drawFood();  
+  ellie.chooseEat();
 }
 
 void draw() {
@@ -39,11 +42,10 @@ void draw() {
   println(timePassed);
   f.drawFood();
   f.setNextGen();
-  ellie.eatFoodInFridge();
-  //Similar to Cellular automata cells[] and use in the rest of the program, draw food if that space in fridge is occupied (boolean value or food class) basically if not empty
+  ellie.chooseEat();
 }
 
-void reset() {
+void reset() {  //Resets values and redraws text, fridge and food
   size(1000, 650);
   background(0);
   resetValues();
@@ -53,10 +55,11 @@ void reset() {
   f.drawFood();
 }
 
-void resetValues() {
-  ellie = new Student("Ellie", 16, healthiness/10,shoppingFrequency, 0.8, 10, 10, f);
-  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n);
+void resetValues() {  //resets values for classes and timePassed
+  ellie = new Student("Ellie", 16, healthiness/10, f);
+  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
   f.assignStudent(ellie);
+  timePassed = 0;
 }
 
 void drawText() {
@@ -75,4 +78,9 @@ void drawText() {
   text("Days Passed: " + timePassed, 525, 200);
   f.drawSpoiledFoodCounter(525, 250);
   ellie.displayHealth(525, 300);
+}
+
+void gameOver() {
+  noLoop();
+  pressed = false;
 }

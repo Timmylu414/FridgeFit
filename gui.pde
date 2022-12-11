@@ -31,6 +31,7 @@ public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:4866
   else if (pressed == false){
     loop();
     pressed = true;
+    button2.setText("pause");
   }
 } //_CODE_:button2:486693:
 
@@ -40,12 +41,13 @@ public void healthinessSlider_change1(GSlider source, GEvent event) { //_CODE_:h
 } //_CODE_:healthinessSlider:270016:
 
 public void spoilRateSlider_change1(GSlider source, GEvent event) { //_CODE_:spoilRateSlider:966716:
-  //spoilRate = spoilRateSlider.getValueI()/10;
+  spoilRate = spoilRateSlider.getValueI();
   reset();
 } //_CODE_:spoilRateSlider:966716:
 
 public void shoppingFrequencySlider_change(GSlider source, GEvent event) { //_CODE_:shoppingFrequencySlider:923430:
-  println("shoppingFrequencySlider - GSlider >> GEvent." + event + " @ " + millis());
+  shoppingFrequency = shoppingFrequencySlider.getValueI();
+  reset();
 } //_CODE_:shoppingFrequencySlider:923430:
 
 
