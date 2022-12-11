@@ -1,8 +1,8 @@
 import g4p_controls.*;
 boolean pressed=true;
 int timePassed = 0;
-int foodCounter=0;
-int n = 4;
+int foodCounter= 0;
+//int n = 4;
 int padding = 50;
 int fridgeX = 40;
 int fridgeY = 25;
@@ -13,25 +13,28 @@ float healthiness;
 float spoilRate;
 int shoppingFrequency;
 
-String studentName = "Ellie";
+String studentName = "User";
+int FR = 3;
+int n = 4;
+boolean resetProgram;
 
 
 Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
-Student ellie = new Student(studentName, 16, healthiness/10, f);
+Student student = new Student(studentName, 16, healthiness/10, f);
 
 
 void setup() {
   println(spoilRate);
-  frameRate(3);
+  frameRate(FR);
   size(1000, 650);
   background(0);
-  f.assignStudent(ellie);
+  f.assignStudent(student);
   drawText();
   createGUI();
   f.drawFridge();
   f.setFirstGen();
   f.drawFood();  
-  ellie.chooseEat();
+  student.chooseEat();
 }
 
 void draw() {
@@ -42,7 +45,7 @@ void draw() {
   println(timePassed);
   f.drawFood();
   f.setNextGen();
-  ellie.chooseEat();
+  student.chooseEat();
 }
 
 void reset() {  //Resets values and redraws text, fridge and food
@@ -56,9 +59,9 @@ void reset() {  //Resets values and redraws text, fridge and food
 }
 
 void resetValues() {  //resets values for classes and timePassed
-  ellie = new Student("Ellie", 16, healthiness/10, f);
+  student = new Student("Ellie", 16, healthiness/10, f);
   f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
-  f.assignStudent(ellie);
+  f.assignStudent(student);
   timePassed = 0;
 }
 
@@ -77,10 +80,17 @@ void drawText() {
   text("Timothy, Ellie, Roy", 525, 130);
   text("Days Passed: " + timePassed, 525, 200);
   f.drawSpoiledFoodCounter(525, 250);
-  ellie.displayHealth(525, 300);
+  student.displayHealth(525, 300);
 }
 
 void gameOver() {
   noLoop();
-  pressed = false;
+  //rect(0, 0, 1000, 650);
+  fill(255, 0, 0);
+  textSize(100);
+  text("YOU DIED", 200, 325);
+  textSize(12);
+  if (resetProgram == true){
+    reset();
+  }
 }

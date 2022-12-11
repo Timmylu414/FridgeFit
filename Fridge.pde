@@ -83,8 +83,8 @@ class Fridge {
     rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius);
     strokeWeight(10);
     stroke(100);
-    line(fridgeX+25, 2*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 2*(cellSize + padding)+padding/2.0);
-    line(fridgeX+25, 4*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 4*(cellSize + padding)+padding/2.0);
+    line(fridgeX+25, 2*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 2*(cellSize + padding)+padding/2.0); //fix
+    line(fridgeX+25, 4*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 4*(cellSize + padding)+padding/2.0); //fix
     noStroke();
   }
 

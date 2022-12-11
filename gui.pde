@@ -14,41 +14,88 @@
  * =========================================================
  */
 
-synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:630841:
+synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:762598:
   appc.background(230);
-} //_CODE_:window1:630841:
+} //_CODE_:window1:762598:
 
-public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:211651:
+public void imgButton2_click1(GImageButton source, GEvent event) { //_CODE_:imgButton2:910573:
+  //println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton2:910573:
+
+public void healthinessSlider_change1(GSlider source, GEvent event) { //_CODE_:healthinessSlider:423901:
+  healthiness = healthinessSlider.getValueI();
   reset();
-} //_CODE_:button1:211651:
+} //_CODE_:healthinessSlider:423901:
 
-public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:486693:
+public void shopFreq_change1(GSlider source, GEvent event) { //_CODE_:shoppingFrequencySlider:469290:
+  shoppingFrequency = shoppingFrequencySlider.getValueI();
+  reset();
+} //_CODE_:shoppingFrequencySlider:469290:
+
+public void spoilRateSlider_change1(GSlider source, GEvent event) { //_CODE_:spoilRateSlider:377247:
+  spoilRate = spoilRateSlider.getValueI();
+  reset();
+} //_CODE_:spoilRateSlider:377247:
+
+public void button1_click1(GButton source, GEvent event) { //_CODE_:pause:337762:
   if (pressed == true){
     noLoop();
     pressed = false;
-    button2.setText("play");
+    pause.setText("play");
   }
   else if (pressed == false){
     loop();
     pressed = true;
-    button2.setText("pause");
+    pause.setText("pause");
   }
-} //_CODE_:button2:486693:
+} //_CODE_:pause:337762:
 
-public void healthinessSlider_change1(GSlider source, GEvent event) { //_CODE_:healthinessSlider:270016:
-  healthiness = healthinessSlider.getValueI();
+public void button2_click1(GButton source, GEvent event) { //_CODE_:reset:467462:
+  resetProgram = true;
   reset();
-} //_CODE_:healthinessSlider:270016:
+} //_CODE_:reset:467462:
 
-public void spoilRateSlider_change1(GSlider source, GEvent event) { //_CODE_:spoilRateSlider:966716:
-  spoilRate = spoilRateSlider.getValueI();
-  reset();
-} //_CODE_:spoilRateSlider:966716:
+public void screenshot_click1(GButton source, GEvent event) { //_CODE_:screenshot:297306:
+  saveFrame();
+} //_CODE_:screenshot:297306:
 
-public void shoppingFrequencySlider_change(GSlider source, GEvent event) { //_CODE_:shoppingFrequencySlider:923430:
-  shoppingFrequency = shoppingFrequencySlider.getValueI();
+public void name_change1(GTextField source, GEvent event) { //_CODE_:name:610640:
+  studentName = name.getText();
   reset();
-} //_CODE_:shoppingFrequencySlider:923430:
+} //_CODE_:name:610640:
+
+public void minus_click1(GImageButton source, GEvent event) { //_CODE_:minus:409139:
+  FR -= 1;
+  println("--------------", FR);
+} //_CODE_:minus:409139:
+
+public void plus_click1(GImageButton source, GEvent event) { //_CODE_:plus:718535:
+  FR += 1;
+  println("--------------", FR);
+} //_CODE_:plus:718535:
+
+public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:imgButton1:707027:
+  n = 4;
+  reset();
+} //_CODE_:imgButton1:707027:
+
+public void imgButton3_click1(GImageButton source, GEvent event) { //_CODE_:imgButton3:851739:
+  n = 7;
+  reset();
+} //_CODE_:imgButton3:851739:
+
+public void imgButton4_click1(GImageButton source, GEvent event) { //_CODE_:imgButton4:281302:
+  n = 10;
+  reset();
+} //_CODE_:imgButton4:281302:
+
+public void imgButton5_click1(GImageButton source, GEvent event) { //_CODE_:imgButton5:245859:
+  println("imgButton5 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton5:245859:
+
+public void imgButton6_click1(GImageButton source, GEvent event) { //_CODE_:imgButton6:386248:
+  println("imgButton6 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton6:386248:
 
 
 
@@ -59,63 +106,119 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 300, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 450, 350, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  button1 = new GButton(window1, 303, 252, 80, 30);
-  button1.setText("reset");
-  button1.addEventHandler(this, "button1_click1");
-  button2 = new GButton(window1, 17, 251, 80, 30);
-  button2.setText("pause");
-  button2.addEventHandler(this, "button2_click1");
-  healthinessSlider = new GSlider(window1, 26, 46, 100, 67, 10.0);
+  imgButton2 = new GImageButton(window1, 0, -44, 450, 56, new String[] { "blackBKG.jpg", "blackBKG.jpg", "blackBKG.jpg" } );
+  imgButton2.addEventHandler(this, "imgButton2_click1");
+  healthinessSlider = new GSlider(window1, 197, 167, 100, 59, 10.0);
   healthinessSlider.setShowValue(true);
   healthinessSlider.setLimits(5, 0, 10);
   healthinessSlider.setNbrTicks(10);
-  healthinessSlider.setStickToTicks(true);
   healthinessSlider.setShowTicks(true);
   healthinessSlider.setNumberFormat(G4P.INTEGER, 0);
+  healthinessSlider.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   healthinessSlider.setOpaque(false);
   healthinessSlider.addEventHandler(this, "healthinessSlider_change1");
-  label1 = new GLabel(window1, 27, 20, 129, 20);
-  label1.setText("Helathiness Of Food");
-  label1.setOpaque(false);
-  label2 = new GLabel(window1, 25, 116, 104, 20);
-  label2.setText("Spoil Rate");
-  label2.setOpaque(false);
-  spoilRateSlider = new GSlider(window1, 26, 149, 100, 66, 10.0);
+  shoppingFrequencySlider = new GSlider(window1, 197, 259, 100, 58, 10.0);
+  shoppingFrequencySlider.setShowValue(true);
+  shoppingFrequencySlider.setLimits(5, 0, 10);
+  shoppingFrequencySlider.setNbrTicks(10);
+  shoppingFrequencySlider.setShowTicks(true);
+  shoppingFrequencySlider.setNumberFormat(G4P.INTEGER, 0);
+  shoppingFrequencySlider.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  shoppingFrequencySlider.setOpaque(false);
+  shoppingFrequencySlider.addEventHandler(this, "shopFreq_change1");
+  spoilRateSlider = new GSlider(window1, 196, 86, 100, 55, 10.0);
   spoilRateSlider.setShowValue(true);
   spoilRateSlider.setLimits(5, 0, 10);
   spoilRateSlider.setNbrTicks(10);
-  spoilRateSlider.setStickToTicks(true);
   spoilRateSlider.setShowTicks(true);
   spoilRateSlider.setNumberFormat(G4P.INTEGER, 0);
   spoilRateSlider.setOpaque(false);
   spoilRateSlider.addEventHandler(this, "spoilRateSlider_change1");
-  shoppingFrequencySlider = new GSlider(window1, 253, 48, 100, 63, 10.0);
-  shoppingFrequencySlider.setShowValue(true);
-  shoppingFrequencySlider.setLimits(5, 0, 10);
-  shoppingFrequencySlider.setNbrTicks(10);
-  shoppingFrequencySlider.setStickToTicks(true);
-  shoppingFrequencySlider.setShowTicks(true);
-  shoppingFrequencySlider.setNumberFormat(G4P.INTEGER, 0);
-  shoppingFrequencySlider.setOpaque(false);
-  shoppingFrequencySlider.addEventHandler(this, "shoppingFrequencySlider_change");
-  label3 = new GLabel(window1, 253, 17, 121, 20);
-  label3.setText("Shopping Frequency");
+  pause = new GButton(window1, 340, 91, 80, 30);
+  pause.setText("pause");
+  pause.setLocalColorScheme(GCScheme.RED_SCHEME);
+  pause.addEventHandler(this, "button1_click1");
+  reset = new GButton(window1, 339, 176, 80, 30);
+  reset.setText("reset");
+  reset.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  reset.addEventHandler(this, "button2_click1");
+  screenshot = new GButton(window1, 338, 267, 80, 30);
+  screenshot.setText("screenshot");
+  screenshot.setLocalColorScheme(GCScheme.CYAN_SCHEME);
+  screenshot.addEventHandler(this, "screenshot_click1");
+  name = new GTextField(window1, 52, 96, 106, 30, G4P.SCROLLBARS_NONE);
+  name.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  name.setOpaque(true);
+  name.addEventHandler(this, "name_change1");
+  minus = new GImageButton(window1, 90, 278, 42, 35, new String[] { "minus.png", "minus.png", "minus.png" } );
+  minus.addEventHandler(this, "minus_click1");
+  plus = new GImageButton(window1, 54, 280, 33, 30, new String[] { "plus.jpg", "plus.jpg", "plus.jpg" } );
+  plus.addEventHandler(this, "plus_click1");
+  togGroup1 = new GToggleGroup();
+  togGroup2 = new GToggleGroup();
+  label2 = new GLabel(window1, 196, 68, 80, 20);
+  label2.setText("Spoil Rate");
+  label2.setOpaque(false);
+  label3 = new GLabel(window1, 197, 145, 117, 20);
+  label3.setText("Healthiness of Food");
+  label3.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   label3.setOpaque(false);
+  label4 = new GLabel(window1, 197, 239, 125, 20);
+  label4.setText("Shopping Frequency");
+  label4.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  label4.setOpaque(false);
+  label5 = new GLabel(window1, 55, 158, 80, 20);
+  label5.setText("Fridge Size");
+  label5.setLocalColorScheme(GCScheme.CYAN_SCHEME);
+  label5.setOpaque(false);
+  label6 = new GLabel(window1, 53, 249, 80, 20);
+  label6.setText("Speed");
+  label6.setLocalColorScheme(GCScheme.RED_SCHEME);
+  label6.setOpaque(false);
+  label7 = new GLabel(window1, 52, 70, 80, 20);
+  label7.setText("Name");
+  label7.setLocalColorScheme(GCScheme.GOLD_SCHEME);
+  label7.setOpaque(false);
+  imgButton1 = new GImageButton(window1, 55, 182, 25, 22, new String[] { "small.png", "small.png", "small.png" } );
+  imgButton1.addEventHandler(this, "imgButton1_click1");
+  imgButton3 = new GImageButton(window1, 88, 182, 23, 23, new String[] { "med.png", "med.png", "med.png" } );
+  imgButton3.addEventHandler(this, "imgButton3_click1");
+  imgButton4 = new GImageButton(window1, 121, 183, 20, 20, new String[] { "Large.png", "Large.png", "Large.png" } );
+  imgButton4.addEventHandler(this, "imgButton4_click1");
+  imgButton5 = new GImageButton(window1, 135, 12, 185, 28, new String[] { "Screen Shot 2022-12-11 at 4.08.54 AM.png", "Screen Shot 2022-12-11 at 4.08.54 AM.png", "Screen Shot 2022-12-11 at 4.08.54 AM.png" } );
+  imgButton5.addEventHandler(this, "imgButton5_click1");
+  imgButton6 = new GImageButton(window1, -1, 12, 51, 52, new String[] { "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png" } );
+  imgButton6.addEventHandler(this, "imgButton6_click1");
   window1.loop();
 }
 
 // Variable declarations 
 // autogenerated do not edit
 GWindow window1;
-GButton button1; 
-GButton button2; 
+GImageButton imgButton2; 
 GSlider healthinessSlider; 
-GLabel label1; 
-GLabel label2; 
-GSlider spoilRateSlider; 
 GSlider shoppingFrequencySlider; 
+GSlider spoilRateSlider; 
+GButton pause; 
+GButton reset; 
+GButton screenshot; 
+GTextField name; 
+GImageButton minus; 
+GImageButton plus; 
+GToggleGroup togGroup1; 
+GToggleGroup togGroup2; 
+GLabel label2; 
 GLabel label3; 
+GLabel label4; 
+GLabel label5; 
+GLabel label6; 
+GLabel label7; 
+GImageButton imgButton1; 
+GImageButton imgButton3; 
+GImageButton imgButton4; 
+GImageButton imgButton5; 
+GImageButton imgButton6; 

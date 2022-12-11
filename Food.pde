@@ -3,11 +3,8 @@ class Food
   //FIELDS
   float healthValue;
   float flavorValue;
-  float liklyGoodStill;
-  int rottenChance;
   String type;
   float freshness;
-  boolean spoiled;
   int i;
   int j;
   color foodColor;
