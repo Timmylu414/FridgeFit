@@ -5,11 +5,13 @@ class Fridge {
   int fridgeWidth; 
   int fridgeHeight;
   int fridgeXPad;
+  int fridgeYPad;
   int radius;
   ArrayList <Food> food;
   ArrayList <Food> freshFood;
   Food[][] cells;
-  float cellSize;
+  float cellX;
+  float cellY;
   float pad;
   int n;
   int numFoodSpoiled;
@@ -24,12 +26,14 @@ class Fridge {
     this.y = y;
     this.fridgeWidth = w;
     this.fridgeHeight = h;
-    this.fridgeXPad = (fridgeWidth/2)/n; 
+    this.fridgeXPad = (fridgeWidth/2)/n;
+    this.fridgeYPad = (fridgeHeight/2)/(n+1);
     this.radius = r;
     this.food = new ArrayList<Food>();
     this.freshFood = new ArrayList<Food>();
     this.cells = new Food[n+1][n];
-    this.cellSize = (fridgeWidth/2)/n;
+    this.cellX = (fridgeWidth/2)/n;
+    this.cellY = (fridgeHeight/2)/(n+1);
     this.pad = padding;
     this.n = n;
     this.numFoodSpoiled = 0;
@@ -85,26 +89,28 @@ class Fridge {
     rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius);
     strokeWeight(10);
     stroke(100);
-    line(fridgeX+25, 2*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 2*(cellSize + padding)+padding/2.0);
-    line(fridgeX+25, 4*(cellSize + padding)+padding/2.0, fridgeX+25 + ((n-1)*50) + n*cellSize, 4*(cellSize + padding)+padding/2.0);
+    for (int i=1; i < (n+1); i++) {
+      if (i%2 == 0) {
+      line(fridgeX+(fridgeXPad/2), fridgeY + (i*(cellY+fridgeYPad)), fridgeX+(fridgeXPad/2) + (n-1)*(cellX + fridgeXPad) + cellX, fridgeY + (i*(cellY+fridgeYPad)));
+      }
+  }
     noStroke();
   }
 
   void drawFood() {
-    float y = pad;
     //countFood();
 
     for (int i=0; i<(n+1); i++) {
+      float y = fridgeY + fridgeYPad/2 + (i*(cellY+fridgeYPad));
       for (int j = 0; j<n; j++) {
-        float x = fridgeX + fridgeXPad/2 + (j*(cellSize+fridgeXPad));  
+        float x = fridgeX + fridgeXPad/2 + (j*(cellX+fridgeXPad));  
         if (cells[i][j] == null) {
           fill(255);
         } else {
           fill(cells[i][j].foodColor);
         }
-        square(x, y, cellSize);
+        rect(x, y, cellX, cellY);
       }
-      y += 50 + cellSize;
     }
   }
 

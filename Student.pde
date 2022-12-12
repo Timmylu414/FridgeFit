@@ -82,6 +82,8 @@ class Student {
 
   void displayHealth(int x, int y) {
     fill(255);
+    text("Food eaten: " + foodEaten, x, y + 50);
+    text("Boredom: " + boredom, x, y + 100);
     if (health >= 100) {
       text("Student health: 100", x, y);
       health = 100;
@@ -91,8 +93,5 @@ class Student {
     } else {
       text("Student health: " + health, x, y);
     }
-
-    text("Food eaten: " + foodEaten, x, y + 50);
-    text("Boredom: " + boredom, x, y + 100);
   }
 }

@@ -1,4 +1,6 @@
 import g4p_controls.*;
+
+//Variables that are passed into class constructors
 boolean pressed=true;
 int timePassed = 0;
 int foodCounter=0;
@@ -36,12 +38,11 @@ void setup() {
 void draw() {
   background(0);
   f.drawFridge();
-  drawText();
-  timePassed += 1;
-  //println(timePassed);
+  timePassed += 1;  //keeps track of how much time has passed in the program
   f.drawFood();
   f.setNextGen();
   ellie.chooseEat();
+  drawText();
 }
 
 void reset() {  //Resets values and redraws text, fridge and food
@@ -61,6 +62,7 @@ void resetValues() {  //resets values for classes and timePassed
   timePassed = 0;
 }
 
+//Drawing text on the window for users to see 
 void drawText() {
   textSize(40);
   fill(150);
@@ -80,6 +82,11 @@ void drawText() {
 }
 
 void gameOver() {
+  background(0);
   noLoop();
   pressed = false;
+  textSize(100);
+  fill(255,0,0);
+  text("GAME OVER", 200, 300);
+  textSize(20);
 }
