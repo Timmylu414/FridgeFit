@@ -13,6 +13,7 @@ class Fridge {
   float cellX;
   float cellY;
   float pad;
+  String size;
   int n;
   int numFoodSpoiled;
   float spoilRate;
@@ -21,7 +22,19 @@ class Fridge {
   Student student;
 
   //CONSTRUCTOR
-  Fridge(int x, int y, int w, int h, int r, float padding, int n, float sR, int sF) {
+  Fridge(int x, int y, int w, int h, int r, float padding, String s, float sR, int sF) {
+    this.size = s;
+    if (this.size == "small") {
+      this.n = 3;
+    }
+
+    else if (this.size == "medium") {
+      this.n = 5;
+    }
+
+    else if (this.size == "large") {
+      this.n = 6;
+    }
     this.x = x;
     this.y = y;
     this.fridgeWidth = w;
@@ -35,11 +48,12 @@ class Fridge {
     this.cellX = (fridgeWidth/2)/n;
     this.cellY = (fridgeHeight/2)/(n+1);
     this.pad = padding;
-    this.n = n;
+
     this.numFoodSpoiled = 0;
     this.spoilRate = sR;
     this.shoppingFrequency=sF;
     this.capacity = n*(n+1);
+    
   }
 
   //METHODS
@@ -91,9 +105,9 @@ class Fridge {
     stroke(100);
     for (int i=1; i < (n+1); i++) {
       if (i%2 == 0) {
-      line(fridgeX+(fridgeXPad/2), fridgeY + (i*(cellY+fridgeYPad)), fridgeX+(fridgeXPad/2) + (n-1)*(cellX + fridgeXPad) + cellX, fridgeY + (i*(cellY+fridgeYPad)));
+        line(fridgeX+(fridgeXPad/2), fridgeY + (i*(cellY+fridgeYPad)), fridgeX+(fridgeXPad/2) + (n-1)*(cellX + fridgeXPad) + cellX, fridgeY + (i*(cellY+fridgeYPad)));
       }
-  }
+    }
     noStroke();
   }
 

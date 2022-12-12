@@ -1,29 +1,32 @@
 import g4p_controls.*;
 
-//Variables that are passed into class constructors
+//Initial variables that are passed into class constructors
+
 boolean pressed=true;
 int timePassed = 0;
 int foodCounter=0;
-int n = 4;
 int padding = 50;
 int fridgeX = 40;
 int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 555;
 int radius = 28;
-float healthiness;
-float spoilRate;
-int shoppingFrequency;
+
+//These variables can be changed through GUI but have initial values at the start
+float h = 6;
+float spoilRate = 6;
+int shoppingFrequency = 6;
 int selfControl = 20;
+int fr = 3;
+String fridgeSize = "medium";
 
 
-Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
-Student ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
-
+Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, fridgeSize, spoilRate/50, shoppingFrequency);
+Student ellie = new Student("Ellie", 16, h/10, selfControl, f);
 
 void setup() {
   //println(spoilRate);
-  frameRate(3);
+  frameRate(fr);
   size(1000, 650);
   background(0);
   f.assignStudent(ellie);
@@ -56,8 +59,8 @@ void reset() {  //Resets values and redraws text, fridge and food
 }
 
 void resetValues() {  //resets values for classes and timePassed
-  ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
-  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
+  ellie = new Student("Ellie", 16, h/10, selfControl, f);
+  f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, fridgeSize, spoilRate/50, shoppingFrequency);
   f.assignStudent(ellie);
   timePassed = 0;
 }
