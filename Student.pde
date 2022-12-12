@@ -2,7 +2,7 @@ class Student {
   String name;
   int age;
   int health;
-  float healthiness;
+  float healthiness = 5;
   float loneliness;
   Fridge fridge;
   int foodEaten;

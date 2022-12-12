@@ -11,7 +11,6 @@ int radius = 28;
 float healthiness;
 float spoilRate;
 int shoppingFrequency;
-
 String studentName = "User";
 int FR = 3;
 int n = 4;
@@ -86,9 +85,10 @@ void gameOver() {
   noLoop();
   //rect(0, 0, 1000, 650);
   fill(255, 0, 0);
-  textSize(100);
-  text("YOU DIED", 200, 325);
+  textSize(75);
+  text("YOU DIED", 525, 450);
   textSize(12);
+  fill(255);
   if (resetProgram == true){
     reset();
   }
