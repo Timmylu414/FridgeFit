@@ -7,6 +7,7 @@ class Fridge {
   int fridgeXPad;
   int radius;
   ArrayList <Food> food;
+  ArrayList <Food> freshFood;
   Food[][] cells;
   float cellSize;
   float pad;
@@ -26,6 +27,7 @@ class Fridge {
     this.fridgeXPad = (fridgeWidth/2)/n; 
     this.radius = r;
     this.food = new ArrayList<Food>();
+    this.freshFood = new ArrayList<Food>();
     this.cells = new Food[n+1][n];
     this.cellSize = (fridgeWidth/2)/n;
     this.pad = padding;
@@ -105,15 +107,17 @@ class Fridge {
       y += 50 + cellSize;
     }
   }
+
   void removeSpoiled() {
     for (int i=food.size()-1; i>=0; i--) {
       Food item = food.get(i);
-      if ((item.freshness<0.2) && (random(0, 1)>0.9)) {
+      if ((item.freshness<0.2)) {
         removeItem(i);
         numFoodSpoiled++;
       }
     }
   }
+
   void setNextGen() {
     removeSpoiled();
     for (Food item : food) {
@@ -124,6 +128,16 @@ class Fridge {
       fillFridge();
     }
   }
+
+  //int countFresh() {
+  //  int numFresh;
+  //  for (Food f : food) {
+  //    if (f.freshness<0.2) {
+  //      freshFood.add(f);
+  //    }
+  //  }
+  //  return(freshFood.size());
+  //}
 
   void drawSpoiledFoodCounter(int x, int y) {
     String text = ("Spoiled food thrown out :" + numFoodSpoiled);

@@ -7,7 +7,7 @@ class Student {
   int selfControl;
   Fridge fridge;
   int foodEaten;
-  
+
 
   Student(String n, int a, float h, int s, Fridge f) {
     this.name = n;
@@ -48,7 +48,7 @@ class Student {
   }
 
   void eatAtHome(int n, float hV, float fV) {
-    health += n-2;
+    health -= 2;
     boredom += 1;
     //println("n is: ", n);
     for (int i=f.food.size()-1; i>=0; i--) {
@@ -59,11 +59,12 @@ class Student {
 
       if ((item.healthValue >= hV) && (item.freshness>= hV-0.4)) {
         foodEaten++;
-        health = health + round((item.healthValue-0.3)*5) - round((1-item.freshness)*3);
+        health = health + round((item.healthValue)*4) - round((1-item.freshness)*3);
         f.removeItem(i);
         n--;
       }
     }
+    //code so that if no food is eaten that frame, health diminishes
   }
   //eat out
   void eatOut() {
@@ -72,8 +73,7 @@ class Student {
     if ((healthiness + random(-0.1, 0.1)) >= 0.5) {
       println(name, "had a nice meal out with buddies at a fancy restaurant");
       health +=2;
-    }
-    else {
+    } else {
       println(name, "went to McDonalds and got a Big Mac :(");
       health -= 2;
     }
