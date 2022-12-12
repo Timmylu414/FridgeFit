@@ -20,6 +20,7 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 
 public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:211651:
   reset();
+  loop();
 } //_CODE_:button1:211651:
 
 public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:486693:

@@ -108,7 +108,7 @@ class Fridge {
   void removeSpoiled() {
     for (int i=food.size()-1; i>=0; i--) {
       Food item = food.get(i);
-      if ((item.freshness<0.2) && (random(0, 1)>0.8)) {
+      if ((item.freshness<0.2) && (random(0, 1)>0.9)) {
         removeItem(i);
         numFoodSpoiled++;
       }

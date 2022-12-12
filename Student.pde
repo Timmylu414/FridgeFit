@@ -3,16 +3,19 @@ class Student {
   int age;
   int health;
   float healthiness;
-  float loneliness;
+  int boredom;
+  int selfControl;
   Fridge fridge;
   int foodEaten;
+  
 
-  Student(String n, int a, float h, Fridge f) {
+  Student(String n, int a, float h, int s, Fridge f) {
     this.name = n;
     this.age = a;
     this.health = 80;
     this.healthiness = h;
-    this.loneliness = 0;
+    this.boredom = 0;
+    this.selfControl = s;
     this.fridge = f;
     this.foodEaten = 0;
   }
@@ -23,9 +26,8 @@ class Student {
   }
 
   void chooseEat() {  //decides whether student eats at home or goes out
-    if (loneliness>20) {
+    if (boredom >= selfControl) {
       eatOut();
-      println(name, "touched grass");
     } else {
       eatFoodInFridge();
     }
@@ -37,18 +39,18 @@ class Student {
     // also check the timepassed. use that to implement how often the student eats
     float variance = 0.2;
     int mealsPerDay;
-    if (healthiness>=0.5) {
+    if (healthiness>=0.4) {
       mealsPerDay = int(random(1, 4));
     } else {
-      mealsPerDay = int(random(0, 3));
+      mealsPerDay = int(random(0, 4));
     }
     eatAtHome(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
   }
 
   void eatAtHome(int n, float hV, float fV) {
     health += n-2;
-    loneliness += 1;
-    println("n is: ", n);
+    boredom += 1;
+    //println("n is: ", n);
     for (int i=f.food.size()-1; i>=0; i--) {
       Food item = f.food.get(i);
       if (n == 0) {
@@ -57,7 +59,7 @@ class Student {
 
       if ((item.healthValue >= hV) && (item.freshness>= hV-0.4)) {
         foodEaten++;
-        health = health + round((item.healthValue-0.4)*5) - round((1-item.freshness)*3);
+        health = health + round((item.healthValue-0.3)*5) - round((1-item.freshness)*3);
         f.removeItem(i);
         n--;
       }
@@ -65,8 +67,16 @@ class Student {
   }
   //eat out
   void eatOut() {
-    loneliness = 0;
-    health += 2;
+    boredom = 0;
+    println(healthiness);
+    if ((healthiness + random(-0.1, 0.1)) >= 0.5) {
+      println(name, "had a nice meal out with buddies at a fancy restaurant");
+      health +=2;
+    }
+    else {
+      println(name, "went to McDonalds and got a Big Mac :(");
+      health -= 2;
+    }
   }
 
 
@@ -74,6 +84,7 @@ class Student {
     fill(255);
     if (health >= 100) {
       text("Student health: 100", x, y);
+      health = 100;
     } else if (health <= 0) {
       text("Student health: 0", x, y);
       gameOver();
@@ -82,5 +93,6 @@ class Student {
     }
 
     text("Food eaten: " + foodEaten, x, y + 50);
+    text("Boredom: " + boredom, x, y + 100);
   }
 }

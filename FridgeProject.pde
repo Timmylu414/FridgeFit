@@ -12,14 +12,15 @@ int radius = 28;
 float healthiness;
 float spoilRate;
 int shoppingFrequency;
+int selfControl = 20;
 
 
 Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
-Student ellie = new Student("Ellie", 16, healthiness/10, f);
+Student ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
 
 
 void setup() {
-  println(spoilRate);
+  //println(spoilRate);
   frameRate(3);
   size(1000, 650);
   background(0);
@@ -37,7 +38,7 @@ void draw() {
   f.drawFridge();
   drawText();
   timePassed += 1;
-  println(timePassed);
+  //println(timePassed);
   f.drawFood();
   f.setNextGen();
   ellie.chooseEat();
@@ -54,7 +55,7 @@ void reset() {  //Resets values and redraws text, fridge and food
 }
 
 void resetValues() {  //resets values for classes and timePassed
-  ellie = new Student("Ellie", 16, healthiness/10, f);
+  ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
   f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, n, spoilRate/50, shoppingFrequency);
   f.assignStudent(ellie);
   timePassed = 0;
