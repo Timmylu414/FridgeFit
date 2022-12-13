@@ -83,11 +83,14 @@ class Fridge {
   void drawFridge() {  //Draws white rectangle as background for fridge
     fill(255);
     rect(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius);
+    strokeWeight(10);
+    stroke(100);
     for (int i=1; i < (n+1); i++) {
       if (i%2 == 0) {  
         line(fridgeX+(fridgeXPad/2), fridgeY + (i*(cellY+fridgeYPad)), fridgeX+(fridgeXPad/2) + (n-1)*(cellX + fridgeXPad) + cellX, fridgeY + (i*(cellY+fridgeYPad)));  // calculates where to draw lines representing shelves
       }
     }
+    noStroke();
   }
 
   void drawFood() {  //Drawing rectangles in a grid pattern, similar to cellular automata but spaced apart

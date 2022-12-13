@@ -67,16 +67,14 @@ void resetValues() {  //resets values for classes and timePassed
 
 //Drawing text on the window for users to see 
 void drawText() {
-  textSize(40);
   fill(150);
   stroke(255);
   strokeWeight(4);
   rect(510, 25, 600, 130, 25);
   noStroke();
   fill(255);
-  text("The", 525, 90);
   textSize(50);
-  text("FridgeProject", 600, 90);
+  text("FridgeFit", 520, 90);
   textSize(20);
   text("Timothy, Ellie, Roy", 525, 130);
   text("Days Passed: " + timePassed, 525, 200);
