@@ -90,7 +90,9 @@ void gameOver() {  //Game over screen when student reaches 0 health
   pressed = false;
   textSize(100);
   fill(255, 0, 0);
-  text("GAME OVER", 200, 300);
+  textAlign(CENTER);
+  text("GAME OVER", 500, 300);
   textSize(20);
-  text("press reset to try again", 380, 350);
+  text("your lifestyle is not sustainable", 500, 350);
+  text("press reset to try again", 500, 400);
 }
