@@ -69,7 +69,6 @@ class Student {
   //eat out
   void eatOut() {
     boredom = 0;
-    println(healthiness);
     if ((healthiness + random(-0.1, 0.1)) >= 0.5) {
       println(name, "had a nice meal out with buddies at a fancy restaurant");
       health +=2;

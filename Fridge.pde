@@ -29,11 +29,11 @@ class Fridge {
     }
 
     else if (this.size == "medium") {
-      this.n = 5;
+      this.n = 4;
     }
 
     else if (this.size == "large") {
-      this.n = 6;
+      this.n = 5;
     }
     this.x = x;
     this.y = y;
