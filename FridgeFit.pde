@@ -10,7 +10,7 @@ int fridgeX = 40;
 int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 550;
-int radius = 25;
+int radius = 20;
 
 //These variables can be changed through GUI but have initial values at the start
 String fridgeName = "User's Fridge";
