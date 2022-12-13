@@ -10,7 +10,7 @@ int fridgeX = 40;
 int fridgeY = 25;
 int fridgeWidth = 425;
 int fridgeHeight = 550;
-int radius = 28;
+int radius = 25;
 
 //These variables can be changed through GUI but have initial values at the start
 String fridgeName = "User's Fridge";
@@ -70,7 +70,7 @@ void drawText() {
   fill(150);
   stroke(255);
   strokeWeight(4);
-  rect(510, 25, 600, 130, 25);
+  rect(510, 25, 600, 130, 15);
   noStroke();
   fill(255);
   textSize(50);
