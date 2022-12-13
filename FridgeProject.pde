@@ -21,12 +21,10 @@ int selfControl = 20;
 int fr = 3;
 String fridgeSize = "medium";
 
-
 Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, fridgeSize, spoilRate/50, shoppingFrequency);
 Student ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
 
 void setup() {
-  //println(spoilRate);
   frameRate(fr);
   size(1000, 650);
   background(0);
@@ -82,19 +80,19 @@ void drawText() {
   textSize(20);
   text("Timothy, Ellie, Roy", 525, 130);
   text("Days Passed: " + timePassed, 525, 200);
-  f.drawSpoiledFoodCounter(525, 250);
-  ellie.displayHealth(525, 300);
+  text(fridgeName, 200, 610);
+  ellie.displayStats(525, 250);
   textAlign(CENTER);
-  text(fridgeName, 250,610);
   textAlign(LEFT);
 }
 
-void gameOver() {
+void gameOver() {  //Game over screen when student reaches 0 health
   background(0);
   noLoop();
   pressed = false;
   textSize(100);
-  fill(255,0,0);
+  fill(255, 0, 0);
   text("GAME OVER", 200, 300);
   textSize(20);
+  text("press reset to try again", 380, 350);
 }

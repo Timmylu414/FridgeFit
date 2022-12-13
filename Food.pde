@@ -1,11 +1,10 @@
-class Food
-{
+class Food{
   //FIELDS
   float healthValue;
-  float flavorValue;
-  float liklyGoodStill;
-  int rottenChance;
-  String type;
+  //float flavorValue;
+  //float likleyGoodStill;
+  //int rottenChance;
+  //String type;
   float freshness;
   boolean spoiled;
   int i;
@@ -13,10 +12,10 @@ class Food
   color foodColor;
   
   //CONSTRUCTOR
-  Food(float hV, float fV, String t, float f, int i, int j) {
+  Food(float hV, float f, int i, int j) {
     healthValue = hV;
-    flavorValue = fV;
-    type =t;
+    //flavorValue = fV;
+    //type =t;
     this.freshness = f;
     this.i = i;
     this.j = j;

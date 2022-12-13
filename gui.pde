@@ -40,11 +40,11 @@ public void button1_click1(GButton source, GEvent event) { //_CODE_:pause:337762
   if (pressed == true) {
     noLoop();
     pressed = false;
-    pause.setText("play");
+    pause.setText("play");  //changes button to say "play" if program is paused
   } else {
     loop();
     pressed = true;
-    pause.setText("pause");
+    pause.setText("pause");  //changes button to say "pause" if program is played
   }
 } //_CODE_:pause:337762:
 
@@ -65,7 +65,7 @@ public void name_change1(GTextField source, GEvent event) { //_CODE_:name:610640
 } //_CODE_:name:610640:
 
 public void minus_click1(GImageButton source, GEvent event) { //_CODE_:speedMinus:409139:
-  if (fr>1) {
+  if (fr>1) {  //ensuring frame rate doesnt go to 0, which causes bugs
     fr -= 1;
     reset();
   }
@@ -121,16 +121,16 @@ public void createGUI(){
   window1.addDrawHandler(this, "win_draw1");
   imgButton2 = new GImageButton(window1, 0, -44, 514, 68, new String[] { "blackBKG.jpg", "blackBKG.jpg", "blackBKG.jpg" } );
   imgButton2.addEventHandler(this, "imgButton2_click1");
-  Healthiness = new GSlider(window1, 327, 178, 130, 70, 10.0);
+  Healthiness = new GSlider(window1, 327, 168, 130, 70, 10.0);
   Healthiness.setShowValue(true);
   Healthiness.setShowLimits(true);
   Healthiness.setLimits(6, 0, 10);
   Healthiness.setNbrTicks(10);
   Healthiness.setNumberFormat(G4P.INTEGER, 0);
-  Healthiness.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  Healthiness.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   Healthiness.setOpaque(false);
   Healthiness.addEventHandler(this, "healthinessSlider_change1");
-  Shopping_Frequency = new GSlider(window1, 166, 174, 130, 72, 10.0);
+  Shopping_Frequency = new GSlider(window1, 166, 169, 130, 72, 10.0);
   Shopping_Frequency.setShowValue(true);
   Shopping_Frequency.setShowLimits(true);
   Shopping_Frequency.setLimits(6, 0, 10);
@@ -139,12 +139,13 @@ public void createGUI(){
   Shopping_Frequency.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   Shopping_Frequency.setOpaque(false);
   Shopping_Frequency.addEventHandler(this, "shopFreq_change1");
-  Spoil_Rate = new GSlider(window1, 162, 305, 130, 70, 10.0);
+  Spoil_Rate = new GSlider(window1, 164, 298, 130, 70, 10.0);
   Spoil_Rate.setShowValue(true);
   Spoil_Rate.setShowLimits(true);
   Spoil_Rate.setLimits(6, 0, 10);
   Spoil_Rate.setNbrTicks(10);
   Spoil_Rate.setNumberFormat(G4P.INTEGER, 0);
+  Spoil_Rate.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   Spoil_Rate.setOpaque(false);
   Spoil_Rate.addEventHandler(this, "spoilRateSlider_change1");
   pause = new GButton(window1, 15, 140, 120, 30);
@@ -163,9 +164,9 @@ public void createGUI(){
   name.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
   name.setOpaque(true);
   name.addEventHandler(this, "name_change1");
-  speedMinus = new GImageButton(window1, 82, 332, 49, 42, new String[] { "minus.png", "minus.png", "minus.png" } );
+  speedMinus = new GImageButton(window1, 23, 332, 49, 42, new String[] { "minus.png", "minus.png", "minus.png" } );
   speedMinus.addEventHandler(this, "minus_click1");
-  speedPlus = new GImageButton(window1, 22, 333, 41, 40, new String[] { "plus.jpg", "plus.jpg", "plus.jpg" } );
+  speedPlus = new GImageButton(window1, 82, 335, 41, 40, new String[] { "plus.jpg", "plus.jpg", "plus.jpg" } );
   speedPlus.addEventHandler(this, "plus_click1");
   togGroup1 = new GToggleGroup();
   togGroup2 = new GToggleGroup();
@@ -180,32 +181,32 @@ public void createGUI(){
   large.addEventHandler(this, "largeClick");
   fridgeLogo = new GImageButton(window1, -1, 24, 83, 77, new String[] { "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png", "Screen Shot 2022-12-11 at 4.09.06 AM.png" } );
   fridgeLogo.addEventHandler(this, "imgButton6_click1");
-  Self_Control = new GSlider(window1, 328, 307, 130, 70, 10.0);
+  Self_Control = new GSlider(window1, 325, 297, 130, 70, 10.0);
   Self_Control.setShowValue(true);
   Self_Control.setShowLimits(true);
   Self_Control.setLimits(15, 0, 30);
   Self_Control.setNbrTicks(10);
   Self_Control.setNumberFormat(G4P.INTEGER, 0);
-  Self_Control.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  Self_Control.setLocalColorScheme(GCScheme.CYAN_SCHEME);
   Self_Control.setOpaque(false);
   Self_Control.addEventHandler(this, "slider1_change1");
   Speed = new GLabel(window1, 35, 293, 80, 30);
   Speed.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Speed.setText("Speed");
   Speed.setOpaque(false);
-  sF = new GLabel(window1, 185, 123, 93, 40);
+  sF = new GLabel(window1, 182, 142, 93, 40);
   sF.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   sF.setText("Shopping Frequency");
   sF.setOpaque(false);
-  HealthinessSlider = new GLabel(window1, 348, 125, 90, 30);
+  HealthinessSlider = new GLabel(window1, 348, 141, 90, 30);
   HealthinessSlider.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   HealthinessSlider.setText("Healthiness");
   HealthinessSlider.setOpaque(false);
-  sP = new GLabel(window1, 182, 271, 80, 20);
+  sP = new GLabel(window1, 186, 280, 80, 20);
   sP.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   sP.setText("Spoil Rate");
   sP.setOpaque(false);
-  sC = new GLabel(window1, 345, 269, 95, 20);
+  sC = new GLabel(window1, 340, 281, 95, 20);
   sC.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   sC.setText("Self Control");
   sC.setOpaque(false);
