@@ -9,11 +9,12 @@ int padding = 50;
 int fridgeX = 40;
 int fridgeY = 25;
 int fridgeWidth = 425;
-int fridgeHeight = 555;
+int fridgeHeight = 550;
 int radius = 28;
 
 //These variables can be changed through GUI but have initial values at the start
-float h = 6;
+String fridgeName = "Fridge";
+float healthiness = 6;
 float spoilRate = 6;
 int shoppingFrequency = 6;
 int selfControl = 20;
@@ -22,7 +23,7 @@ String fridgeSize = "medium";
 
 
 Fridge f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, fridgeSize, spoilRate/50, shoppingFrequency);
-Student ellie = new Student("Ellie", 16, h/10, selfControl, f);
+Student ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
 
 void setup() {
   //println(spoilRate);
@@ -59,7 +60,7 @@ void reset() {  //Resets values and redraws text, fridge and food
 }
 
 void resetValues() {  //resets values for classes and timePassed
-  ellie = new Student("Ellie", 16, h/10, selfControl, f);
+  ellie = new Student("Ellie", 16, healthiness/10, selfControl, f);
   f = new Fridge(fridgeX, fridgeY, fridgeWidth, fridgeHeight, radius, padding, fridgeSize, spoilRate/50, shoppingFrequency);
   f.assignStudent(ellie);
   timePassed = 0;
@@ -82,6 +83,9 @@ void drawText() {
   text("Days Passed: " + timePassed, 525, 200);
   f.drawSpoiledFoodCounter(525, 250);
   ellie.displayHealth(525, 300);
+  textAlign(CENTER);
+  text(fridgeName, 250,610);
+  textAlign(LEFT);
 }
 
 void gameOver() {

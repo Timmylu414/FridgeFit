@@ -149,15 +149,6 @@ class Fridge {
     }
   }
 
-  //int countFresh() {
-  //  int numFresh;
-  //  for (Food f : food) {
-  //    if (f.freshness<0.2) {
-  //      freshFood.add(f);
-  //    }
-  //  }
-  //  return(freshFood.size());
-  //}
 
   void drawSpoiledFoodCounter(int x, int y) {
     String text = ("Spoiled food thrown out :" + numFoodSpoiled);
