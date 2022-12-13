@@ -50,6 +50,7 @@ void draw() {
 }
 
 void reset() {  //Resets values and redraws text, fridge and food
+  frameRate(fr);
   size(1000, 650);
   background(0);
   resetValues();

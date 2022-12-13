@@ -29,12 +29,12 @@ class Student {
     if (boredom >= selfControl) {
       eatOut();
     } else {
-      eatFoodInFridge();
+      eatAtHome();
     }
   }
 
   //calculates values to input into eatAtHome function
-  void eatFoodInFridge() {
+  void eatAtHome() {
     // do some logic based on the students stats to decide what to send in the parameters for the eatFood() function in fridge
     // also check the timepassed. use that to implement how often the student eats
     float variance = 0.2;
@@ -44,10 +44,10 @@ class Student {
     } else {
       mealsPerDay = int(random(0, 4));
     }
-    eatAtHome(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
+    eatFoodInFridge(mealsPerDay, healthiness + random(-variance, variance), healthiness + random(-variance, variance));
   }
 
-  void eatAtHome(int n, float hV, float fV) {
+  void eatFoodInFridge(int n, float hV, float fV) {
     health -= 2;
     boredom += 1;
     //println("n is: ", n);
