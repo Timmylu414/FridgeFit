@@ -13,7 +13,7 @@ int fridgeHeight = 550;
 int radius = 28;
 
 //These variables can be changed through GUI but have initial values at the start
-String fridgeName = "Fridge";
+String fridgeName = "User's Fridge";
 float healthiness = 6;
 float spoilRate = 6;
 int shoppingFrequency = 6;
